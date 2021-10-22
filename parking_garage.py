@@ -1,3 +1,6 @@
+from typing import SupportsAbs
+
+
 class ParkingGarage:
 
     def __init__(self, numspots=10):
@@ -26,32 +29,32 @@ class ParkingGarage:
         if ticketNumber not in self.spots:
             print('This is not a valid ticket number')
             return
-        elif self.spots[ticketNumber] != 'empty':
+        elif self.spots[ticketNumber] == 'empty':
             print('This spot is empty and does not require payment')
             return
-        elif self.spots[ticketNumber] != 'paid':
+        elif self.spots[ticketNumber] == 'paid':
             print('This spot has already been paid for')
             return
-        elif self.spots[ticketNumber] != 'unpaid':
+        elif self.spots[ticketNumber] == 'unpaid':
             amount = input('How much would you like to pay?')
             print('Your ticket has been paid and you have 15 minutes to leave the parking garage')
-            self.spaces[ticketNumber] = 'paid'
+            self.spots[ticketNumber] = 'paid'
 
     def leaveGarage(self):
         ticketNumber = input('please enter your ticket number')
         if ticketNumber not in self.spots:
             print('This is not a valid ticket number')
             return
-        elif self.spots[ticketNumber] != 'empty':
+        elif self.spots[ticketNumber] == 'empty':
             print('This spot is empty. Please enter a ticket that corresponds to a spot that is occupied.')
             return
-        elif spaces['ticketNumber'] == 'unpaid':
+        elif SupportsAbs[ticketNumber] == 'unpaid':
             print('Please complete payment before you can leave the garage')
             self.payForParking(ticketNumber)
             return
-        elif spaces['ticketNumber'] == 'paid':
+        elif self.spots[ticketNumber] == 'paid':
             print('Thank You, have a nice day')
-            self.spots[str(ticketNumber)] == 'empty'
+            self.spots[ticketNumber] = 'empty'
             self.spaces_occupied -= 1
 
     def run(self):
@@ -59,10 +62,13 @@ class ParkingGarage:
             choice = input('Press 1 to take ticket\nPress 2 to pay for parking\nPress 3 to leave garage\n:')
             if choice == '1':
                 self.takeTicket()
-            if choice == '2':
+            elif choice == '2':
                 self.payForParking()
-            if choice == '3':
+            elif choice == '3':
                 self.leaveGarage()
+            else:
+                print('Invalid Input')
+
 
 garage1 = ParkingGarage(5)
 
